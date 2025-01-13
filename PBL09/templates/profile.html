@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Profile: {{ user.username }}</h1>
+    <h2>Posts:</h2>
+
+    {% if user.posts %}
+        <div class="row">
+            {% for post in user.posts %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p class="card-text">{{ post.content }}</p>
+                            <p class="text-muted">
+                                Posted on {{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No posts yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

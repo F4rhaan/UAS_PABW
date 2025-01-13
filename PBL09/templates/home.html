@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Welcome to the Posting Website {% if user %}{{ user.username }}{% else %}Guest{% endif %}</h1>
+
+    {% if posts %}
+        <div class="row">
+            {% for post in posts %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p class="card-text">{{ post.content }}</p>
+                            <p class="text-muted">
+                                By 
+                                <a href="{{ url_for('profile', encrypted_id=serializer.dumps(post.author.id)) }}">
+                                    {{ post.author.username }}
+                                </a>
+                                on {{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No posts available.</p>
+    {% endif %}
+
+    {% if user %}
+    {% if user.role == 'admin' %}
+        <div class="d-flex gap-3 mt-4">
+            <a href="{{ url_for('dashboard') }}" class="btn btn-primary d-flex align-items-center">
+                <i class="fas fa-tachometer-alt me-2"></i> Go to Dashboard
+            </a>
+            <a href="{{ url_for('logs') }}" class="btn btn-outline-secondary d-flex align-items-center">
+                <i class="fas fa-clipboard-list me-2"></i> View Logs
+            </a>
+        </div>
+    {% endif %}
+{% endif %}
+</div>
+{% endblock %}

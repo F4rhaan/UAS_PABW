@@ -1,0 +1,154 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem;
+}
+
+header ul {
+    list-style: none;
+    padding: 0;
+}
+
+header ul li {
+    display: inline;
+    margin-right: 1rem;
+}
+
+header ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 2rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #f4f4f4;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.messages {
+    margin-bottom: 1rem;
+}
+
+.messages .success {
+    color: green;
+}
+
+.messages .danger {
+    color: red;
+}
+
+.posts .post {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5rem;
+}
+
+/* Card Styling for posts */
+.card {
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-text {
+    font-size: 1.1rem;
+}
+
+.card-header {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-footer {
+    font-size: 0.9rem;
+    text-align: right;
+    color: #6c757d;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+.posts .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.posts .col-md-4 {
+    flex: 1 1 30%;
+    box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+    .posts .col-md-4 {
+        flex: 1 1 100%;
+    }
+}
+
+/* Dashboard Table Styling */
+.log-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.log-table th,
+.log-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.log-table th {
+    background-color: #343a40;
+    color: #fff;
+    font-weight: bold;
+}
+
+.log-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.log-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.log-table td {
+    color: #495057;
+}
+
+/* Success/Failure log coloring */
+.log-table .success {
+    color: green;
+}
+
+.log-table .danger {
+    color: red;
+}

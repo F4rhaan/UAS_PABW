@@ -1,0 +1,21 @@
+# CEK DATA DB-A dari MS1
+curl http://127.0.0.1:5051/users
+
+# CEK DATA DB-A dari MS2
+curl -X GET http://127.0.0.1:5052/users?db_name=DB-A
+
+# CEK DATA DB-B dari MS3
+curl -X GET http://127.0.0.1:5053/users?db_name=DB-B
+
+
+# TAMBAH DATA dari MS1 ke DB-A
+curl -X POST http://127.0.0.1:5051/users -H "Content-Type: application/json" -d '{"name": "MS1 ke Database A", "email": "MS1@DB-A.com"}'
+
+
+# TAMBAH DATA dari MS2 ke DB-B
+curl -X POST http://127.0.0.1:5052/users -H "Content-Type: application/json" -d '{"db_name": "DB-B", "name": "Item TEST MS2", "email": "MS2@DB-B.com"}'
+
+
+# TAMBAH DATA dari MS3 ke DB-A
+curl -X POST http://127.0.0.1:5052/users -H "Content-Type: application/json" -d '{"db_name": "DB-B", "name": "MS3 ke Database A", "email": "MS3@DB-A.com"}'
+

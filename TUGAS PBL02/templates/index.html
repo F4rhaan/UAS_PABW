@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars CRUD</title>
+    <script>
+        async function fetchCars() {
+            const response = await fetch('/cars');
+            const cars = await response.json();
+            const tableBody = document.getElementById('car-table-body');
+            tableBody.innerHTML = '';
+            cars.forEach(car => {
+                const row = `
+                    <tr>
+                        <td>${car.id}</td>
+                        <td>${car.brand}</td>
+                        <td>${car.model}</td>
+                        <td>${car.price}</td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        async function uploadFile(event) {
+            event.preventDefault();
+            const formData = new FormData();
+            const fileInput = document.getElementById('file-input');
+            formData.append('file', fileInput.files[0]);
+
+            await fetch('/upload', {
+                method: 'POST',
+                body: formData,
+            });
+
+            fetchCars();
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchCars);
+    </script>
+</head>
+<body>
+    <h1>Cars CRUD</h1>
+
+    <h2>Upload a CSV File</h2>
+    <form onsubmit="uploadFile(event)">
+        <input id="file-input" type="file" accept=".csv" required />
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Cars List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="car-table-body"></tbody>
+    </table>
+</body>
+</html>
